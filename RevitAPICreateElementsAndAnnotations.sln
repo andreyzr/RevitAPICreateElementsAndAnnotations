@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevitAPICreateElementsAndAnnotations", "RevitAPICreateElementsAndAnnotations\RevitAPICreateElementsAndAnnotations.csproj", "{15B2F19B-55A7-4E12-99C4-206928B56789}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevitAPITrainingLibrary", "..\..\Тема 5.Основы создания интерфейса и библиотек\RevitAPITrainingLibrary\RevitAPITrainingLibrary\RevitAPITrainingLibrary.csproj", "{E88A23B6-FF27-485F-82E7-8E302C5EB089}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{15B2F19B-55A7-4E12-99C4-206928B56789}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15B2F19B-55A7-4E12-99C4-206928B56789}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15B2F19B-55A7-4E12-99C4-206928B56789}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E88A23B6-FF27-485F-82E7-8E302C5EB089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E88A23B6-FF27-485F-82E7-8E302C5EB089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E88A23B6-FF27-485F-82E7-8E302C5EB089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E88A23B6-FF27-485F-82E7-8E302C5EB089}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
