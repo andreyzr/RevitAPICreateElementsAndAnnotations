@@ -1,0 +1,21 @@
+﻿<Window x:Class="RevitAPICreateAnnotations.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RevitAPICreateAnnotations"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="300"
+        Title="Установка метки на трубу">
+    <StackPanel>
+        <Label Content="Выбрать тип метки"
+               Margin="5"/>
+        <ComboBox ItemsSource="{Binding Tags}"
+                  SelectedValue="{Binding SelectedTagTape}"
+                  DisplayMemberPath="Name"
+                  Margin="5"/>
+        <Button Content="Применить"
+                Command="{Binding SaveCommand}"
+                Margin="5"/>
+    </StackPanel>
+</Window>
