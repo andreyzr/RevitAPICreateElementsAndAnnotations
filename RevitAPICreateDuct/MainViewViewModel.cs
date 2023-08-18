@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Mechanical;
 using Autodesk.Revit.DB.Plumbing;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
@@ -19,18 +20,18 @@ namespace RevitAPICreateDuct
     {
         private ExternalCommandData _commandData;
 
-        public List<WallType> WallTypes { get; } = new List<WallType>();
+        public List<DuctType> DuctTypes { get; } = new List<DuctType>();
         public List<Level> Levels { get; } = new List<Level>();
         public DelegateCommand SaveCommand { get; }
         public double WallHeight { get; set; }
         public List<XYZ> Points { get; } = new List<XYZ>();
-        public WallType SelectedWallType { get; set; }
+        public DuctType SelectedDuctType { get; set; }
         public Level SelectedLevel { get; set; }
 
         public MainViewViewModel(ExternalCommandData commandData)
         {
             _commandData = commandData;
-            WallTypes = RevitAPITrainingLibrary.WallTools.GetWallTypes(commandData);
+            DuctTypes = RevitAPITrainingLibrary.DuctTools.GetDuctTypes(commandData);
             Levels = LevelsUtils.GetLevels(commandData);
             SaveCommand = new DelegateCommand(OnSaveCommand);
             WallHeight = 100;
@@ -44,31 +45,39 @@ namespace RevitAPICreateDuct
             Document doc = uidoc.Document;
 
             if (Points.Count < 2 ||
-                SelectedWallType == null ||
+                SelectedDuctType == null ||
                 SelectedLevel == null)
                 return;
-            var curves = new List<Curve>();
+            var points1 = new List<XYZ>();
+            var points2 = new List<XYZ>();
             for (int i = 0; i < Points.Count; i++)
             {
                 if (i == 0)
                     continue;
 
-                var prevPoint = Points[i - 1];
-                var currentPoin = Points[i];
+                var point1 = Points[i - 1];
+                var point2 = Points[i];
 
-                Curve curve = Line.CreateBound(prevPoint, currentPoin);
-                curves.Add(curve);
+                points1.Add(point1);
+                points2.Add(point2);
             }
 
             using (var ts = new Transaction(doc, "Create wall"))
             {
                 ts.Start();
 
-                foreach (var curve in curves)
+                for (int i = 0; i < points1.Count; i++)
                 {
-                    Wall.Create(doc, curve, SelectedWallType.Id, SelectedLevel.Id,
+                    Duct.Create(doc, SelectedDuctType.Id, SelectedLevel.Id, points1[i], points2[i]);
+                }
+
+                foreach (var point in points1)
+                {
+                    Duct.Create(doc, curve, SelectedWallType.Id, SelectedLevel.Id,
                         UnitUtils.ConvertToInternalUnits(WallHeight, UnitTypeId.Millimeters),
                         0, false, false);
+
+                    Duct.Create(doc, SelectedDuctType.Id, SelectedLevel.Id,);
                 }
 
                 ts.Commit();

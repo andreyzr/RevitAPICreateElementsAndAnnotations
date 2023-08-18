@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevitAPICreatePointObject",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevitAPICreateAnnotations", "RevitAPICreateAnnotations\RevitAPICreateAnnotations.csproj", "{64524B32-5FB6-4F29-8D08-39E41C40C66B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW6.1RevitAPICreateDuct", "RevitAPICreateDuct\HW6.1RevitAPICreateDuct.csproj", "{F3BCAFBA-BF01-4193-8793-0716C276E535}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{64524B32-5FB6-4F29-8D08-39E41C40C66B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64524B32-5FB6-4F29-8D08-39E41C40C66B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64524B32-5FB6-4F29-8D08-39E41C40C66B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3BCAFBA-BF01-4193-8793-0716C276E535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3BCAFBA-BF01-4193-8793-0716C276E535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3BCAFBA-BF01-4193-8793-0716C276E535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3BCAFBA-BF01-4193-8793-0716C276E535}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
