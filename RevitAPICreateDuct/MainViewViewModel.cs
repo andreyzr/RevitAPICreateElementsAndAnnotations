@@ -68,7 +68,7 @@ namespace RevitAPICreateDuct
 
                 for (int i = 0; i < points1.Count; i++)
                 {
-                    Duct.Create(doc, SelectedDuctType.Id, SelectedLevel.Id, points1[i], points2[i]);
+                    Duct.Create(doc, SelectedDuctType.Id, SelectedLevel.Id, points1[i], points2[i]);//https://www.programmersought.com/article/519210242716/
                 }
 
                 foreach (var point in points1)
