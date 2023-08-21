@@ -21,20 +21,23 @@ namespace RevitAPICreateDuct
         private ExternalCommandData _commandData;
 
         public List<DuctType> DuctTypes { get; } = new List<DuctType>();
+        public List<MechanicalSystemType> DuctSystemType { get; }=new List<MechanicalSystemType>();
         public List<Level> Levels { get; } = new List<Level>();
         public DelegateCommand SaveCommand { get; }
-        public double WallHeight { get; set; }
+        public double DuctHeight { get; set; }
         public List<XYZ> Points { get; } = new List<XYZ>();
         public DuctType SelectedDuctType { get; set; }
+        public MechanicalSystemType SelectedSystemType { get; set; }
         public Level SelectedLevel { get; set; }
 
         public MainViewViewModel(ExternalCommandData commandData)
         {
             _commandData = commandData;
             DuctTypes = RevitAPITrainingLibrary.DuctTools.GetDuctTypes(commandData);
+            DuctSystemType = GetSystemType(commandData);
             Levels = LevelsUtils.GetLevels(commandData);
             SaveCommand = new DelegateCommand(OnSaveCommand);
-            WallHeight = 100;
+            DuctHeight = 100;
             Points = SelectionUtils.GetPoints(_commandData, "Выберете точки", ObjectSnapTypes.Endpoints);
         }
 
@@ -43,7 +46,7 @@ namespace RevitAPICreateDuct
             UIApplication uiapp = _commandData.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
-
+            
             if (Points.Count < 2 ||
                 SelectedDuctType == null ||
                 SelectedLevel == null)
@@ -62,27 +65,20 @@ namespace RevitAPICreateDuct
                 points2.Add(point2);
             }
 
-            using (var ts = new Transaction(doc, "Create wall"))
+            using (var ts = new Transaction(doc, "Create duct"))
             {
                 ts.Start();
 
                 for (int i = 0; i < points1.Count; i++)
                 {
-                    Duct.Create(doc, SelectedDuctType.Id, SelectedLevel.Id, points1[i], points2[i]);//https://www.programmersought.com/article/519210242716/
-                }
-
-                foreach (var point in points1)
-                {
-                    Duct.Create(doc, curve, SelectedWallType.Id, SelectedLevel.Id,
-                        UnitUtils.ConvertToInternalUnits(WallHeight, UnitTypeId.Millimeters),
-                        0, false, false);
-
-                    Duct.Create(doc, SelectedDuctType.Id, SelectedLevel.Id,);
+                    Duct duct=Duct.Create(doc, SelectedSystemType.Id, SelectedDuctType.Id, SelectedLevel.Id, points1[i], points2[i]);
+                    Parameter ductHeight = duct.LookupParameter("Отметка посередине");
+                    ductHeight.Set(UnitUtils.ConvertToInternalUnits(DuctHeight, UnitTypeId.Millimeters));
                 }
 
                 ts.Commit();
-
             }
+
 
             RaiseCloseRequest();
 
@@ -93,6 +89,20 @@ namespace RevitAPICreateDuct
         private void RaiseCloseRequest()
         {
             CloseRequest?.Invoke(this, EventArgs.Empty);//закрытие окна
+        }
+
+        public static List<MechanicalSystemType> GetSystemType(ExternalCommandData commandData)
+        {
+            UIApplication uiapp = commandData.Application;
+            UIDocument uidoc = uiapp.ActiveUIDocument;
+            Document doc = uidoc.Document;
+
+            List<MechanicalSystemType> ductTypes = new FilteredElementCollector(doc)
+                                                        .OfClass(typeof(MechanicalSystemType))
+                                                        .Cast<MechanicalSystemType>()
+                                                        .ToList();
+
+            return ductTypes;
         }
     }
 }

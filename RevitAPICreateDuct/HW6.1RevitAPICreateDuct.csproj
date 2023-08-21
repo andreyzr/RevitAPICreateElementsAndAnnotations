@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RevitAPICreateDuct</RootNamespace>
-    <AssemblyName>RevitAPICreateDuct</AssemblyName>
+    <AssemblyName>HW6.1RevitAPICreateDuct</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -46,7 +46,8 @@
       <HintPath>C:\Program Files\Autodesk\Revit 2021\RevitAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="RevitAPITrainingLibrary">
+    <Reference Include="RevitAPITrainingLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Тема 5.Основы создания интерфейса и библиотек\RevitAPITrainingLibrary\RevitAPITrainingLibrary\bin\Debug\RevitAPITrainingLibrary.dll</HintPath>
     </Reference>
     <Reference Include="RevitAPIUI">
@@ -87,7 +88,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)*.*" "C:\RevitAPITraining\" /y /i
-xcopy "$(ProjectDir)$(ProjectName).addin" "%25ProgramData%25\Autodesk\Revit\Addins\2021\" /y /i</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

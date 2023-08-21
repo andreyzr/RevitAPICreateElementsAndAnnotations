@@ -5,13 +5,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RevitAPICreateDuct"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
-        Title="Создание стен">
+             d:DesignHeight="320" d:DesignWidth="365"
+        Title="Создание воздуховодов">
     <StackPanel>
-        <Label Content="Выбрать тип стены из списка"
+        <Label Content="Выбрать тип воздуховода из списка"
                Margin="5"/>
-        <ComboBox ItemsSource="{Binding WallTypes}"
-                  SelectedValue="{Binding SelectedWallType}"
+        <ComboBox ItemsSource="{Binding DuctTypes}"
+                  SelectedValue="{Binding SelectedDuctType}"
+                  DisplayMemberPath="Name"
+                  Margin="5"/>
+        <Label Content="Выбрать тип системы воздуховода"
+               Margin="5"/>
+        <ComboBox ItemsSource="{Binding DuctSystemType}"
+                  SelectedValue="{Binding SelectedSystemType}"
                   DisplayMemberPath="Name"
                   Margin="5"/>
         <Label Content="Выбрать уровень"/>
@@ -19,7 +25,7 @@
                   SelectedValue="{Binding SelectedLevel}"
                   DisplayMemberPath="Name"
                   Margin="5"/>
-        <Label Content="Высота стены"/>
+        <Label Content="Отметка от уровня"/>
         <TextBox Text="{Binding WallHeight}" Margin="5"/>
 
         <Button Content="Применить"
