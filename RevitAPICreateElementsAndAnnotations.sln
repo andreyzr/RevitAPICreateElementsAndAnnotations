@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevitAPICreateAnnotations",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW6.1RevitAPICreateDuct", "RevitAPICreateDuct\HW6.1RevitAPICreateDuct.csproj", "{F3BCAFBA-BF01-4193-8793-0716C276E535}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW6.2CreateFamilyInstance", "HW6.2CreateFamilyInstance\HW6.2CreateFamilyInstance.csproj", "{4DD4A1B4-6179-4226-A9AD-929F590E9A97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW6.3CreateFamilysByLine", "HW6.3CreateFamilysByLine\HW6.3CreateFamilysByLine.csproj", "{CA051A7F-2C13-40F6-9047-3C82682B852D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{F3BCAFBA-BF01-4193-8793-0716C276E535}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3BCAFBA-BF01-4193-8793-0716C276E535}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3BCAFBA-BF01-4193-8793-0716C276E535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DD4A1B4-6179-4226-A9AD-929F590E9A97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DD4A1B4-6179-4226-A9AD-929F590E9A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DD4A1B4-6179-4226-A9AD-929F590E9A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DD4A1B4-6179-4226-A9AD-929F590E9A97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA051A7F-2C13-40F6-9047-3C82682B852D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA051A7F-2C13-40F6-9047-3C82682B852D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA051A7F-2C13-40F6-9047-3C82682B852D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA051A7F-2C13-40F6-9047-3C82682B852D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

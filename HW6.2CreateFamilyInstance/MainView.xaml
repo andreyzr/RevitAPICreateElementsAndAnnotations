@@ -1,23 +1,17 @@
-﻿<Window x:Class="RevitAPICreateDuct.MainView"
+﻿<Window x:Class="HW6._2CreateFamilyInstance.MainView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RevitAPICreateDuct"
+             xmlns:local="clr-namespace:HW6._2CreateFamilyInstance"
              mc:Ignorable="d" 
              d:DesignHeight="320" d:DesignWidth="365"
-        Title="Создание воздуховодов">
+        Title="Создание семейств категори Мебель">
     <StackPanel>
-        <Label Content="Выбрать тип воздуховода из списка"
+        <Label Content="Выбрать типаразмер семейства из списка"
                Margin="5"/>
-        <ComboBox ItemsSource="{Binding DuctTypes}"
-                  SelectedValue="{Binding SelectedDuctType}"
-                  DisplayMemberPath="Name"
-                  Margin="5"/>
-        <Label Content="Выбрать тип системы воздуховода"
-               Margin="5"/>
-        <ComboBox ItemsSource="{Binding DuctSystemType}"
-                  SelectedValue="{Binding SelectedSystemType}"
+        <ComboBox ItemsSource="{Binding FurnitureSymbol}"
+                  SelectedValue="{Binding SelectedFurnitureSymbol}"
                   DisplayMemberPath="Name"
                   Margin="5"/>
         <Label Content="Выбрать уровень"/>
@@ -25,11 +19,10 @@
                   SelectedValue="{Binding SelectedLevel}"
                   DisplayMemberPath="Name"
                   Margin="5"/>
-        <Label Content="Отметка от уровня"/>
-        <TextBox Text="{Binding DuctHeight}" Margin="5"/>
 
         <Button Content="Применить"
                 Command="{Binding SaveCommand}"
                 Margin="5"/>
+
     </StackPanel>
 </Window>
